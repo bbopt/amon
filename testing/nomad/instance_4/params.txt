@@ -1,0 +1,14 @@
+DIMENSION 44
+
+BB_EXE "$ $amon $run $4 $-r $--port $4444"
+BB_OUTPUT_TYPE OBJ PB PB PB PB
+
+BB_INPUT_TYPE ( R R R R R R R R R R R R R R R R R R R R R R I I I I I I I I I I I R R R R R R R R R R R )
+LOWER_BOUND 22-32 0
+UPPER_BOUND 22-32 5
+X0 x4.txt
+
+MAX_BB_EVAL 20000
+DISPLAY_ALL_EVAL yes
+HISTORY_FILE results.txt
+display_stats bbe ( sol ) [ bbo ] obj

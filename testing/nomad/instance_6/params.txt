@@ -1,0 +1,12 @@
+DIMENSION 42
+
+BB_EXE "$ $amon $run $6 $-r $--port $6666"
+BB_OUTPUT_TYPE OBJ
+
+BB_INPUT_TYPE * R
+X0 x6.txt
+
+MAX_BB_EVAL 20000
+DISPLAY_ALL_EVAL yes
+HISTORY_FILE results.txt
+display_stats bbe ( sol ) [ bbo ] obj

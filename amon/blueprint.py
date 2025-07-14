@@ -220,7 +220,9 @@ Other files :
 #---------#
 '''
     The units, if not specified, are as follow :
-        - Energy : GWh
-        - Money  : $1000
-        - Time   : Months
+        - Energy   : GWh
+        - Money    : $1000
+        - Time     : Months
+        - Angle    : Degrees
+        - Distance : Meters
 '''

@@ -1,6 +1,6 @@
 DIMENSION 36
 
-BB_EXE "$ $amon $run $2 $-r"
+BB_EXE "$amon $run $2 $-r $--port $2222"
 BB_OUTPUT_TYPE OBJ PB PB PB
 
 BB_INPUT_TYPE ( R R R R R R R R R R R R R R R R R R R R R R R R I I I I I I I I I I I I )
@@ -8,5 +8,7 @@ LOWER_BOUND 24-35 0
 UPPER_BOUND 24-35 2
 X0 x2.txt
 
-MAX_BB_EVAL 1000
+MAX_BB_EVAL 20000
 DISPLAY_ALL_EVAL yes
+display_stats bbe ( sol ) [ bbo ] obj
+HISTORY_FILE results.txt
