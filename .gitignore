@@ -5,3 +5,5 @@ notes.txt
 build
 **/s.py
 **/s2.py
+nomadtmp*
+.nfs*

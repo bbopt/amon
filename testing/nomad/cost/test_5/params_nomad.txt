@@ -1,0 +1,14 @@
+DIMENSION 63
+
+BB_EXE "$ $amon $run $params_amon.txt $-r $--port $1123"
+BB_OUTPUT_TYPE OBJ
+
+BB_INPUT_TYPE ( R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R I I I I I I I I I I I I I I I I I I I I I )
+LOWER_BOUND 42-62 0
+UPPER_BOUND 42-62 5
+FIXED_VARIABLE 0-41
+X0 x0.txt
+
+MAX_BB_EVAL 20000
+DISPLAY_ALL_EVAL yes
+display_stats bbe ( sol ) [ bbo ] obj
