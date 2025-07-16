@@ -3,6 +3,7 @@ __pycache__
 **/.DS_store
 notes.txt
 build
+dist
 **/s.py
 **/s2.py
 nomadtmp*
