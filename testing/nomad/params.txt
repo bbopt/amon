@@ -1,6 +1,6 @@
 DIMENSION 30
 
-BB_EXE "$amon $run $3 $-f $0.7 $-r $--port $3333"
+BB_EXE "$amon $run $3 $-f $0.8"
 BB_OUTPUT_TYPE OBJ PB PB PB
 
 BB_INPUT_TYPE ( R R R R R R R R R R R R I I I I I I R R R R R R R R R R R R )
@@ -11,3 +11,10 @@ X0 x3.txt
 MAX_BB_EVAL 20000
 DISPLAY_ALL_EVAL yes
 display_stats bbe ( sol ) [ bbo ] obj
+
+VARIABLE_GROUP 0 1
+VARIABLE_GROUP 2 3
+VARIABLE_GROUP 4 5
+VARIABLE_GROUP 6 7
+VARIABLE_GROUP 8 9
+VARIABLE_GROUP 10 11

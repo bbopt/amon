@@ -200,7 +200,7 @@ Other files :
     --------------------------------------------------------------------
     OBJECTIVE_FUNCTION      <name of objective function>        (*)
     ZONE                    <id of zone>                        (*)  
-    BUDGET                  <Budget in USD>
+    BUDGET                  <Budget>
     WIND_DATA               <id (index) of wind data folder>    (*)
     TI                      <float value>
     ELEVATION_FUNCTION      <id (index) of shear function>
@@ -209,7 +209,7 @@ Other files :
     BLACKBOX_OUTPUT         <order of bbo>                      (*) (separated by commas) (choices: OBJ, SPACING, PLACING, HEIGHT, BUDGET)
     OPT_VARIABLES           <variables to oprimize>             (*) (separated by commas) (choices: COORDS, HEIGHTS, YAW, TYPES) (same order as point file)
     NB_WIND_TURBINES        <integer value or VAR>              (*)
-    CONSTRAINT_FREE         <TRUE or FALSE (default FALSE)
+    CONSTRAINT_FREE         <TRUE or FALSE (default FALSE)>
     --------------------------------------------------------------------
     Note : the ones with (*) are mandatory, others are optional
 '''

@@ -1,4 +1,4 @@
-### version 0.2
+### Version 0.2
 
 # Installation
 
@@ -8,9 +8,11 @@ To install:
 pip install amon-bb
 ```
 
-> Note: pip needs to be installed
+The application is installed in `$HOME/.local/bin` under the name `amon`. This document assumes that this directory is in your `$PATH` (follow the instructions below to add it).
 
-The application is installed in `$HOME/.local/bin`. This directory needs to be in your `$PATH`. To verify, run:
+> Note: If you don't want to append to your `$PATH`, you can simply run this application with `$HOME/.local/bin/amon` instead of with `amon`.
+
+### Verify if `$HOME/.local/bin` is already in `$PATH`
 
 ```bash
 echo $PATH | tr ':' '\n' | grep "$HOME/.local/bin"
@@ -18,19 +20,21 @@ echo $PATH | tr ':' '\n' | grep "$HOME/.local/bin"
 
 If you see an output looking like `/home/username/.local/bin`, it is already in your path; you can move on to the **Verification** step. If not, follow the steps below.
 
-### Adding to $PATH globally
+### Adding to `$PATH` globally
 
 If using `bash`: 
 ```bash
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
 If using `zsh`:
 
 ```bash
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
-### Adding to $PATH in current shell session
+### Adding to `$PATH` in current shell session
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"

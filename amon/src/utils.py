@@ -25,7 +25,8 @@ INSTANCES_PARAM_FILEPATHS = [ AMON_HOME / 'instances' / '1' / 'params.txt',
                               AMON_HOME / 'instances' / '3' / 'params.txt',
                               AMON_HOME / 'instances' / '4' / 'params.txt',
                               AMON_HOME / 'instances' / '5' / 'params.txt',
-                              AMON_HOME / 'instances' / '6' / 'params.txt' ]
+                              AMON_HOME / 'instances' / '6' / 'params.txt',
+                              AMON_HOME / 'instances' / '7' / 'params.txt' ]
 
 # Names of available wind turbines in order
 AVAILABLE_TURBINES_NAMES = ['V80', 'OpenWind', 'IEA_22MW', 'V82', 'Bespoke_6MW', 'IEA_3.4MW']
