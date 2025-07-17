@@ -32,19 +32,18 @@ def _runBB(args):
         from amon.src.client import runBBRequest
         result = [float(res) for res in runBBRequest(args).split()]
         for res in result:
-            print(f'{res:.8f}', end=' ') 
+            print(f'{res:.7f}', end=' ') 
         print()
     else:
         from amon.src.blackbox import runBB
         result = [float(res) for res in runBB(args).split()]
         for res in result:
-            print(f'{res:.8f}', end=' ') 
+            print(f'{res:.7f}', end=' ') 
         print()
 
 def _showWindrose(args):
     if args.save:
         args.save = str(getPath(args.save))
-    print("Showing windrose...")
     from amon.src.plot_functions import showWindrose
     showWindrose(args)
 
@@ -53,17 +52,14 @@ def _showZone(args):
         args.point[0] = str(getPath(args.point[0]))
     if args.save:
         args.save = str(getPath(args.save))
-    print("Showing zone...")
     from amon.src.plot_functions import showZone
     showZone(args)
 
 def _showTurbine(args):
-    print("Showing turbine...")
     from amon.src.plot_functions import showTurbine
     showTurbine(args)
 
 def _showElevation(args):
-    print("Showing elevation...")
     from amon.src.plot_functions import showElevation
     showElevation(args)
 
@@ -71,7 +67,7 @@ def _instanceInfo(args):
     print(getInstanceInfo(args.instance_id))
 
 def _check(args):
-    print(check())
+    check()
 
 def _runServer(args):
     args.port = args.port if args.port is not None else DEFAULT_PORT

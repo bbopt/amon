@@ -147,19 +147,23 @@ def getInstanceInfo(instance):
 # This function validates the output against hardcoded values
 def check():
     import subprocess
-    targets = { 1 : ['-44.71755974', '0.00000000', '0.00000000'],
-                2 : ['19556.52059442', '0.00000000', '0.00000000', '0.00000000'],
-                3 : ['1.01848667', '0.00000000', '0.00000000', '0.00000000'],
-                4 : ['1.70348783', '0.00000000', '0.00000000', '0.00000000', '-99979760.00000000'],
-                5 : ['35881.84825531', '0.00000000', '0.00000000', '0.00000000'] }
+    targets = { 1 : ['-44.7175597', '0.0000000', '0.0000000'],
+                2 : ['19556.5205944', '0.0000000', '0.0000000', '0.0000000'],
+                3 : ['1.0184866', '0.0000000', '0.0000000', '0.0000000'],
+                4 : ['1.7034878', '0.0000000', '0.0000000', '0.0000000', '-99979760.0000000'],
+                5 : ['35881.8482553', '0.0000000', '0.0000000', '0.0000000'] }
     results = {}
     for i in range(5):
+        print(f"Done with {20*i}% of check", end="\r", flush=True)
         instance = i+1
         results[instance] = subprocess.run(['amon', 'run', f'{instance}', f'AMON_HOME/starting_pts/x{instance}.txt', '-s', '1'], capture_output=True, text=True).stdout.split()
     for instance, target_result in targets.items():
         if target_result != results[instance]:
-            return "\033[91mCHECK INVALID\033[0m: Unexpected results, please contact some_adress@provider.extension"
-    return "\033[92mCHECK VALID\033[0m"
+            print(target_result)
+            print(results[instance])
+            print("\033[91mCHECK INVALID\033[0m: Unexpected results, please contact some_adress@provider.extension")
+            return
+    print("\033[92mCHECK VALID\033[0m")
 
 def penalizeObj(OBJ, constraints): # constraints is a dict with each field corresponding to a constraint
     OBJ += abs(OBJ) * 0.05 * constraints['placing'] # both constraints are always 0 or positive

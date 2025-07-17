@@ -2,42 +2,16 @@
 
 # Installation
 
-To install:
+The use of a virtual environment is recommended, although not required. 
+
+> for venv basics: https://realpython.com/python-virtual-environments-a-primer/
+
+> If you decide to install this application locally and run into `PATH` issues (`command not found: amon` and similar), or want to run the entry-point script directly without adding its directory to `PATH`, consult [`PATH_DOC.md`](PATH_DOC.md). If the issue persists, please create a new issue or reach out to **adress@provider.extension**.
+
+**To install:**
 
 ```bash
 pip install amon-bb
-```
-
-The application is installed in `$HOME/.local/bin` under the name `amon`. This document assumes that this directory is in your `$PATH` (follow the instructions below to add it).
-
-> Note: If you don't want to append to your `$PATH`, you can simply run this application with `$HOME/.local/bin/amon` instead of with `amon`.
-
-### Verify if `$HOME/.local/bin` is already in `$PATH`
-
-```bash
-echo $PATH | tr ':' '\n' | grep "$HOME/.local/bin"
-```
-
-If you see an output looking like `/home/username/.local/bin`, it is already in your path; you can move on to the **Verification** step. If not, follow the steps below.
-
-### Adding to `$PATH` globally
-
-If using `bash`: 
-```bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-```
-If using `zsh`:
-
-```bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
-source ~/.zshrc
-```
-
-### Adding to `$PATH` in current shell session
-
-```bash
-export PATH="$HOME/.local/bin:$PATH"
 ```
 
 # Verification
@@ -50,7 +24,7 @@ amon check
 
 # Usage
 
-The program can be run from anywhere using the `amon` command.
+The program can be run from anywhere using the `amon` command (if added to `PATH`).
 
 To view all available commands:
 
@@ -58,7 +32,7 @@ To view all available commands:
 amon -h
 ```
 
-To view the help menu for a specific subcommand, `run` for example:
+To view the help menu for a specific command, `run` for example:
 
 ```bash
 amon run -h
