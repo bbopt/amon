@@ -4,9 +4,9 @@
 
 The use of a virtual environment is recommended, although not required. 
 
-> for venv basics: https://realpython.com/python-virtual-environments-a-primer/
+> For venv basics: https://realpython.com/python-virtual-environments-a-primer/
 
-> If you decide to install this application locally and run into `PATH` issues (`command not found: amon` and similar), or want to run the entry-point script directly without adding its directory to `PATH`, consult [`PATH_DOC.md`](PATH_DOC.md). If the issue persists, please create a new issue or reach out to **adress@provider.extension**.
+> If you decide to install this application locally and run into `PATH` issues (`command not found: amon` and similar), or want to run the entry-point script directly without adding its directory to `PATH`, consult [PATH_DOC.md](PATH_DOC.md). If the issue persists, please create a new issue or reach out to **adress@provider.extension**.
 
 **To install:**
 

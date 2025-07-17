@@ -32,13 +32,13 @@ def _runBB(args):
         from amon.src.client import runBBRequest
         result = [float(res) for res in runBBRequest(args).split()]
         for res in result:
-            print(f'{res:.7f}', end=' ') 
+            print(f'{res:.8f}', end=' ') 
         print()
     else:
         from amon.src.blackbox import runBB
         result = [float(res) for res in runBB(args).split()]
         for res in result:
-            print(f'{res:.7f}', end=' ') 
+            print(f'{res:.8f}', end=' ') 
         print()
 
 def _showWindrose(args):
