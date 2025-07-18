@@ -1,0 +1,15 @@
+DIMENSION 6
+
+BB_EXE "$ $amon $run $7 $-f $1 $-r $--port $7777"
+BB_OUTPUT_TYPE OBJ PB PB
+
+BB_INPUT_TYPE * R
+X0 x7.txt
+
+MAX_BB_EVAL 3000
+DISPLAY_ALL_EVAL yes
+display_stats bbe ( sol ) [ bbo ] obj
+
+VARIABLE_GROUP 0 1
+VARIABLE_GROUP 2 3
+VARIABLE_GROUP 4 5

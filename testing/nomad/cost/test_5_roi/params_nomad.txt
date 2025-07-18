@@ -1,6 +1,6 @@
 DIMENSION 63
 
-BB_EXE "$ $amon $run $params_amon.txt $-r $--port $1123"
+BB_EXE "$ $amon $run $params_amon.txt $-r $--port $9987"
 BB_OUTPUT_TYPE OBJ
 
 BB_INPUT_TYPE ( R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R I I I I I I I I I I I I I I I I I I I I I )

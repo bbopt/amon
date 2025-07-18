@@ -1,6 +1,6 @@
 DIMENSION 30
 
-BB_EXE "$amon $run $3 $-f $0.7 $-r $--port $3333"
+BB_EXE "$amon $run $3 $-f $1 $-r $--port $3333"
 BB_OUTPUT_TYPE OBJ PB PB PB
 
 BB_INPUT_TYPE ( R R R R R R R R R R R R I I I I I I R R R R R R R R R R R R )
@@ -8,6 +8,6 @@ LOWER_BOUND 12-17 0
 UPPER_BOUND 12-17 2
 X0 x3.txt
 
-MAX_BB_EVAL 20000
+MAX_BB_EVAL 3000
 DISPLAY_ALL_EVAL yes
 display_stats bbe ( sol ) [ bbo ] obj

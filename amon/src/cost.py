@@ -32,34 +32,34 @@ theta = { 'rotor'        : 1e-6,
           'generator'    : 8.26e-5 } # Time units in months
 
 
-V80_COST         = { 'price'      : 400,                        # Purchase price of the turbine  ($1000)
+V80_COST         = { 'price'      : 300,                        # Purchase price of the turbine  ($1000)
                      'parts'      : v80_parts_costs,            # Purchase price of its parts    ($1000)
-                     'install'    : 100,                        # Cost of installing the turbine ($1000)
+                     'install'    : 10,                         # Cost of installing the turbine ($1000)
                      'h_augment'  : 3 }                         # Cost of augmenting the height, in $1000 per meter
 
 OPEN_WIND_COST   = { 'price'      : 500,
                      'parts'      : openwind_parts_costs,
-                     'install'    : 10,
+                     'install'    : 40,
                      'h_augment'  : 3 }
 
-IEA_22MW_COST    = { 'price'      : 100,
+IEA_22MW_COST    = { 'price'      : 600,
                      'parts'      : iea_22_parts_costs,
-                     'install'    : 10,
+                     'install'    : 50,
                      'h_augment'  : 3 }
 
-V82_COST         = { 'price'      : 110,
+V82_COST         = { 'price'      : 310,
                      'parts'      : v82_parts_costs,
                      'install'    : 10,
                      'h_augment'  : 3 }
 
-BESPOKE_6MW_COST = { 'price'      : 100,
+BESPOKE_6MW_COST = { 'price'      : 400,
                      'parts'      : bespoke_6_parts_costs,
-                     'install'    : 10,
+                     'install'    : 30,
                      'h_augment'  : 3 }
 
-IEA_3_4_MW       = { 'price'      : 100,
+IEA_3_4_MW       = { 'price'      : 200,
                      'parts'      : iea_3_4_parts_costs,
-                     'install'    : 10,
+                     'install'    : 20,
                      'h_augment'  : 3 }
 
 
