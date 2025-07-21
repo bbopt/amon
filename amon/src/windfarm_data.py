@@ -330,8 +330,7 @@ class WindFarmData:
             raise ValueError("\033[91mError\033[0m: Fidelity must be between 0 and 1")
 
         # Combination of wake def, superposition, and rotor avg models in ascending fidelity
-        models_combinations = [ [0, 1, 0],
-                                [0, 2, 0],
+        models_combinations = [ [0, 2, 0],
                                 [0, 2, 1],
                                 [0, 2, 2],
                                 [0, 2, 3],
@@ -342,11 +341,11 @@ class WindFarmData:
                                 [2, 2, 2] ]
         
         # Find right model combination according to fidelity
-        comb_index = int(fidelity * 10)
+        comb_index = int(fidelity * 9)
         models_indices = models_combinations[comb_index-1]
 
         # Fix rotor average model
-        CGI_models_args = [4, 7, 9] # Superposition models (thirs column) 1, 2, and 3 are all CGI but with different constructor arguments
+        CGI_models_args = [4, 7, 9] # Superposition models (third column) 1, 2, and 3 are all CGI but with different constructor arguments
         CGI_index = models_indices[2] - 1
         if CGI_index < 0:
             self.rotor_avg_model = RotorCenter()

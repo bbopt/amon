@@ -4,7 +4,7 @@ BB_EXE "$amon $run $params_amon.txt $-r $--port $2109 $-f $0.6"
 BB_OUTPUT_TYPE OBJ PB PB
 
 BB_INPUT_TYPE ( R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R R I I I I I I I I I I I I I I I I I I I I I I I I I I I I I I )
-X0 x0.txt
+X0 x2.txt
 
 LOWER_BOUND 60-89 0
 UPPER_BOUND 60-89 5

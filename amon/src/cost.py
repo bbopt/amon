@@ -13,7 +13,6 @@ v80_parts_costs    = { 'rotor'        : 162,
                        'gearbox'      : 202,
                        'generator'    : 150 } # In thousands of dollars
 
-# These calculations will dissapear and the data will be hardcoded, this is just to start
 openwind_parts_costs  = {part : cost * 10.5 / 2 for part, cost in v80_parts_costs.items()}
 iea_22_parts_costs    = {part : cost * 22.0 / 2 for part, cost in v80_parts_costs.items()}
 v82_parts_costs       = {part : cost * 1.65 / 2 for part, cost in v80_parts_costs.items()}
@@ -37,7 +36,7 @@ V80_COST         = { 'price'      : 300,                        # Purchase price
                      'install'    : 10,                         # Cost of installing the turbine ($1000)
                      'h_augment'  : 3 }                         # Cost of augmenting the height, in $1000 per meter
 
-OPEN_WIND_COST   = { 'price'      : 500,
+OPEN_WIND_COST   = { 'price'      : 400,
                      'parts'      : openwind_parts_costs,
                      'install'    : 40,
                      'h_augment'  : 3 }
@@ -47,7 +46,7 @@ IEA_22MW_COST    = { 'price'      : 600,
                      'install'    : 50,
                      'h_augment'  : 3 }
 
-V82_COST         = { 'price'      : 310,
+V82_COST         = { 'price'      : 250,
                      'parts'      : v82_parts_costs,
                      'install'    : 10,
                      'h_augment'  : 3 }
@@ -57,7 +56,7 @@ BESPOKE_6MW_COST = { 'price'      : 400,
                      'install'    : 30,
                      'h_augment'  : 3 }
 
-IEA_3_4_MW       = { 'price'      : 200,
+IEA_3_4_MW       = { 'price'      : 350,
                      'parts'      : iea_3_4_parts_costs,
                      'install'    : 20,
                      'h_augment'  : 3 }

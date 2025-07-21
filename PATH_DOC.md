@@ -1,10 +1,12 @@
-# Adding `amon` to `PATH`
+# Entry-point scripts
 
-If the `python` command is not found, install python and/or add it to `PATH` (see https://realpython.com/add-python-to-path/)
+The python packages with a command all have a corresponding entry-point script that runs a specific function. For instance, the `amon` command executes its entry-point script, which itself executes the package's main function.
 
-## What to add to `PATH`?
+Therefore, the location of this script is necessary if we want to add it to `PATH`, or run it directly. 
 
-The entry-point scripts, or commands, of pip-installed packages reside in a specific directory. It is this directory that needs to be added to `PATH`.
+## Where is the entry-point script's directory?
+
+> Note: For virtual environments, the script should be added to `PATH` automatically. If not, please consult the virtual environment's documentation.
 
 ### System-wide install
 
@@ -30,6 +32,8 @@ python -m site --user-base
 ```
 
 ## Adding to `PATH`
+
+The script's directory's path is what needs to be added to `PATH`.
 
 ### MacOS and Linux
 
