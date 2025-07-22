@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "amon_bb"
-version = "0.3"
+version = "0.4"
 description = "Wind farm blackbox CLI app"
 authors = [{ name = "Léon Biner", email = "leon.biner@polymtl.ca" }]
 readme = "README.md"

@@ -331,9 +331,6 @@ class WindFarmData:
 
         # Combination of wake def, superposition, and rotor avg models in ascending fidelity
         models_combinations = [ [0, 2, 0],
-                                [0, 2, 1],
-                                [0, 2, 2],
-                                [0, 2, 3],
                                 [1, 2, 0],
                                 [2, 0, 0],
                                 [2, 2, 0],
@@ -341,11 +338,10 @@ class WindFarmData:
                                 [2, 2, 2] ]
         
         # Find right model combination according to fidelity
-        comb_index = int(fidelity * 9)
-        models_indices = models_combinations[comb_index-1]
-
+        comb_index = int(fidelity * 5)
+        models_indices = models_combinations[comb_index]
         # Fix rotor average model
-        CGI_models_args = [4, 7, 9] # Superposition models (third column) 1, 2, and 3 are all CGI but with different constructor arguments
+        CGI_models_args = [4, 7, 9] # Superposition models (thirs column) 1, 2, and 3 are all CGI but with different constructor arguments
         CGI_index = models_indices[2] - 1
         if CGI_index < 0:
             self.rotor_avg_model = RotorCenter()
@@ -375,5 +371,5 @@ class WindFarmData:
         else:
             self.interp_method = 'linear'
             self.convergence_tolerance = 1e-6 # Note: Cubic is not supported for the XRSite object that we use
-        self.convergence_tolerance = 1e-5 - fidelity*9.9e-6 # Tolerance set linearly from 1e-5 to 1e-7
+        self.convergence_tolerance = 1e-3 - fidelity*9.9999e-4 # Tolerance set linearly from 1e-3 to 1e-8
         self.wake_dist_model = None

@@ -1,17 +1,23 @@
 #!/bin/bash
 
-PROGRAM="amon run 2 AMON_HOME/starting_pts/x2.txt -f "
+# Use GNU date (gdate) for millisecond precision
+DATE_CMD="gdate"
+
+PROGRAM="amon run 2 AMON_HOME/starting_pts/x2.txt -s 1 -f"
 ARGS=("1" "0.9" "0.8" "0.7" "0.6" "0.5" "0.4" "0.3" "0.2" "0.1" "0")
 
 for arg in "${ARGS[@]}"; do
     echo "Running: $PROGRAM $arg"
-    start_time=$(date +%s)
+
+    start_time=$($DATE_CMD +%s%3N)
 
     $PROGRAM "$arg"
 
-    end_time=$(date +%s)
-    elapsed=$((end_time - start_time))
-    echo "Time taken: ${elapsed}s"
+    end_time=$($DATE_CMD +%s%3N)
+    elapsed_ms=$((end_time - start_time))
+    elapsed_sec=$(awk "BEGIN {printf \"%.3f\", $elapsed_ms / 1000}")
+
+    echo "Time taken: ${elapsed_sec}s"
     echo
 done
 
