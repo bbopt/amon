@@ -19,7 +19,7 @@ Therefore, the location of this script is necessary if we want to add it to `PAT
 python -c "import sysconfig; print(sysconfig.get_path('scripts'))"
 ```
 
-### User-level Install (with pip install --user amon-bb or with restricted access rights)
+### User-level Install (with `pip install --user` or with restricted access rights)
 
 - Entry-point scripts go to:
   - macOS: `~/Library/Python/3.x/bin/`

@@ -51,7 +51,7 @@ V82_COST         = { 'price'      : 250,
                      'install'    : 10,
                      'h_augment'  : 3 }
 
-BESPOKE_6MW_COST = { 'price'      : 400,
+BESPOKE_6MW_COST = { 'price'      : 450,
                      'parts'      : bespoke_6_parts_costs,
                      'install'    : 30,
                      'h_augment'  : 3 }
