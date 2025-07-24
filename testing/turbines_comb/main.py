@@ -20,9 +20,9 @@ def make_point(point_file, nb_turbines):
 def main():
     nb_tests = 4
     obj_funcs = ['lcoe', 'roi']
-    nb_turbines = [12, 6, 11, 21]
+    nb_turbines = [12, 21, 6, 11]
 
-    for test in range(nb_tests):
+    for test in range(1, nb_tests):
         for obj_func in obj_funcs:
             best_obj = sys.maxsize
             best_types = [0 for _ in range(nb_turbines[test])]
