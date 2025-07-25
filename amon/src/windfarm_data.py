@@ -331,14 +331,14 @@ class WindFarmData:
 
         # Combination of wake def, superposition, and rotor avg models in ascending fidelity
         models_combinations = [ [0, 2, 0],
-                                [1, 2, 0],
+                                # [1, 2, 0],
                                 [2, 0, 0],
                                 [2, 2, 0],
                                 [2, 2, 1],
                                 [2, 2, 2] ]
         
         # Find right model combination according to fidelity
-        comb_index = int(fidelity * 5)
+        comb_index = int(fidelity * 4)
         models_indices = models_combinations[comb_index]
         # Fix rotor average model
         CGI_models_args = [4, 7, 9] # Superposition models (thirs column) 1, 2, and 3 are all CGI but with different constructor arguments

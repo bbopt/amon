@@ -1,30 +1,7 @@
 import sys
+import numpy as np
+import matplotlib.pyplot as plt
 
-
-def main():
-    results = []
-    with open('quick_comparison.txt', 'r') as file:
-        for line in file:
-            fidelity, points = line.split(':')
-            fidelity = float(fidelity.split('=')[1].strip())
-            points = [int(x) for x in points.strip('[] \n').split()]
-
-            results.append(Result(fidelity, points))
-
-    for result in results:
-        if result.fidelity == 1:
-            truth = result
-    results.append(Result(-1, truth.points[::-1]))
-    
-    distances = {}
-    for result in results:
-        distances[result.fidelity] = truth.getDistance(result)
-    print('Fid  : dist')
-    print('-----------')
-    for fid, dist in distances.items():
-        print(f'{fid:.2f} :  {int(dist)}')
-
-    
 
 class Result:
     def __init__(self, fidelity, points):
@@ -60,6 +37,45 @@ class Result:
         distance *= 0.5
         return distance
 
+
+def main():
+    results = []
+    with open('quick_comparison.txt', 'r') as file:
+        for line in file:
+            fidelity, points = line.split(':')
+            fidelity = float(fidelity.split('=')[1].strip())
+            points = [int(x) for x in points.strip('[] \n').split()]
+
+            results.append(Result(fidelity, points))
+
+    for result in results:
+        if result.fidelity == 1:
+            truth = result
+    results.append(Result(-1, truth.points[::-1]))
+    
+    distances = {}
+    for result in results:
+        distances[result.fidelity] = truth.getDistance(result)
+    print('Fid  : dist')
+    print('-----------')
+    for fid, dist in distances.items():
+        print(f'{fid:.2f} :  {int(dist)}')
+    
+    worst = distances[-1]
+    similarity = {}
+    for fid, distance in distances.items():
+        similarity[fid] = 1 - distance / worst
+
+    x, y = zip(*similarity.items())
+    print(x)
+    print(y)
+    plt.step(x[:-1], y[:-1], where='post')
+    plt.title('Similarity in order of feasible points with fidelity')
+    plt.grid()
+    plt.xlabel('Fidelity')
+    plt.xticks(np.arange(0, 1.05, 0.05))
+    plt.ylabel('Similarity')
+    plt.show()
 
 
 def test():

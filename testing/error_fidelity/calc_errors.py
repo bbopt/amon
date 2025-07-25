@@ -5,17 +5,17 @@ import matplotlib.pyplot as plt
 
 def main():
     sum_differences = {}
-    for fidelity in np.arange(0, 0.15, 0.05):
+    for fidelity in np.arange(0, 1.05, 0.05):
         sum_differences[fidelity] = 0
 
-    for i in range(2):
+    for i in range(100):
         truth = float(subprocess.run(['amon', 'run', 'params.txt', f'x{i}.txt', '-s', '1'], capture_output=True, text=True).stdout.strip().split()[0])
         print(truth)
         print('----')
-        for fidelity in np.arange(0, 0.15, 0.05):
+        for fidelity in np.arange(0, 1.05, 0.05):
             obj = float(subprocess.run(['amon', 'run', 'params.txt', f'x{i}.txt', '-s', '1', '-f', str(fidelity)], capture_output=True, text=True).stdout.strip().split()[0])
             sum_differences[fidelity] += (abs((truth-obj)/obj))
-            print(sum_differences)
+        print(sum_differences)
     
     with open('results.txt', 'w') as file:
         file.write(f'Fidelities: ')
