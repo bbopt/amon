@@ -9,7 +9,7 @@ def main():
     plt.title('Error with increasing fidelity')
     plt.grid()
     plt.xlabel('Fidelity')
-    plt.ylabel('Error [%]')
+    plt.ylabel('Error')
     plt.show()
 
 

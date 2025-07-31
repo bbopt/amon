@@ -1,10 +1,10 @@
 import subprocess
-import sys
-import numpy as np
 
-for fidelity in np.arange(0, 1.05, 0.05):
+for fidelity in range(6):
+    print(f'Fidelity = {fidelity}')
+    print('---------------')
     results = {}
-    for i in range(int(sys.argv[1])):
+    for i in range(100):
         print(f'{i+1}th iteration')
         results[i] = float(subprocess.run(['amon', 'run', 'params.txt', f'x{i}.txt', '-s', '1', '-f', f'{fidelity}'], capture_output=True, text=True).stdout.strip().split()[0])
     results = dict(sorted(results.items(), key=lambda item: item[1]))

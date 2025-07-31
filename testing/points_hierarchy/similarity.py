@@ -43,13 +43,13 @@ def main():
     with open('quick_comparison.txt', 'r') as file:
         for line in file:
             fidelity, points = line.split(':')
-            fidelity = float(fidelity.split('=')[1].strip())
+            fidelity = int(float(fidelity.split('=')[1].strip()))
             points = [int(x) for x in points.strip('[] \n').split()]
 
             results.append(Result(fidelity, points))
 
     for result in results:
-        if result.fidelity == 1:
+        if result.fidelity == 5:
             truth = result
     results.append(Result(-1, truth.points[::-1]))
     
@@ -67,13 +67,10 @@ def main():
         similarity[fid] = 1 - distance / worst
 
     x, y = zip(*similarity.items())
-    print(x)
-    print(y)
     plt.step(x[:-1], y[:-1], where='post')
     plt.title('Similarity in order of feasible points with fidelity')
     plt.grid()
     plt.xlabel('Fidelity')
-    plt.xticks(np.arange(0, 1.05, 0.05))
     plt.ylabel('Similarity')
     plt.show()
 

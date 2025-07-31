@@ -325,23 +325,23 @@ class WindFarmData:
         except (ValueError, TypeError):
             raise ValueError(f"{param_name} must be a {cast_function.__name__}")
 
-    def __setModels(self, fidelity): # fidelity is a float between 0 and 1
-        if fidelity > 1 or fidelity < 0:
-            raise ValueError("\033[91mError\033[0m: Fidelity must be between 0 and 1")
+    def __setModels(self, fidelity):
+        if fidelity > 5 or fidelity < 0:
+            raise ValueError("\033[91mError\033[0m: Fidelity must be between 0 and 5")
 
         # Combination of wake def, superposition, and rotor avg models in ascending fidelity
         models_combinations = [ [0, 2, 0],
-                                # [1, 2, 0],
+                                [1, 2, 0], #
                                 [2, 0, 0],
                                 [2, 2, 0],
                                 [2, 2, 1],
                                 [2, 2, 2] ]
         
         # Find right model combination according to fidelity
-        comb_index = int(fidelity * 4)
+        comb_index = fidelity
         models_indices = models_combinations[comb_index]
         # Fix rotor average model
-        CGI_models_args = [4, 7, 9] # Superposition models (thirs column) 1, 2, and 3 are all CGI but with different constructor arguments
+        CGI_models_args = [4, 7, 9] # Superposition models (third column) 1, 2, and 3 are all CGI but with different constructor arguments
         CGI_index = models_indices[2] - 1
         if CGI_index < 0:
             self.rotor_avg_model = RotorCenter()
@@ -363,13 +363,12 @@ class WindFarmData:
         self.deflection_model = JimenezWakeDeflection()
         self.turbulence_model = CrespoHernandez(rotorAvgModel=self.rotor_avg_model)
 
-        # The number of bins are fixed for now
-        self.nb_ws_bins = 41
-        self.nb_wd_bins = 36
-        if fidelity < 0.33:
-            self.interp_method = 'nearest'
-        else:
-            self.interp_method = 'linear'
-            self.convergence_tolerance = 1e-6 # Note: Cubic is not supported for the XRSite object that we use
-        self.convergence_tolerance = 1e-3 - fidelity*9.9999e-4 # Tolerance set linearly from 1e-3 to 1e-8
+        covergence_tolerances = [0.01, 1e-4, 1e-6, 1e-8, 1e-10, 1e-12]
+        self.convergence_tolerance = covergence_tolerances[fidelity]
+
+        nb_ws_bins = [20, 40, 60, 80, 100, 120]
+        nb_wd_bins = [12, 36, 60, 84, 108, 132]
+        self.nb_ws_bins = nb_ws_bins[fidelity]
+        self.nb_wd_bins = nb_wd_bins[fidelity] 
+        self.interp_method = 'linear'
         self.wake_dist_model = None

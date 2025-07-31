@@ -12,34 +12,34 @@ class Result:
 
 def main():
     results = []
-    types_values = np.arange(0, 3)
-    for i, val in enumerate(types_values):
+    heights_values = np.arange(0, 400, step=400/500)
+    for i, val in enumerate(heights_values):
         print(f'Iteration {i}')
-        changeVariable(17, val, 'x3.txt')
+        changeVariable(18, val, 'x3.txt')
         results.append(Result(subprocess.run(['amon', 'run', '3', 'x0.txt', '-s', '1'], capture_output=True, text=True).stdout.strip().split()))
     feasible_objs = []
-    feasible_types    = []
+    feasible_heights    = []
     infeasible_objs = []
-    infeasible_types    = []
-    for t, result in zip(types_values, results):
+    infeasible_heights    = []
+    for height, result in zip(heights_values, results):
         print(f'{result.obj:.4f}: {result.is_feasible}')
         if result.is_feasible:
             feasible_objs.append(result.obj)
-            feasible_types.append(t)
+            feasible_heights.append(height)
         else:
             infeasible_objs.append(result.obj)
-            infeasible_types.append(t)
+            infeasible_heights.append(height)
 
     with open('results_feasible.txt', 'w') as f:
-        for t in feasible_types:
-            f.write(f' {t} ')
+        for height in feasible_heights:
+            f.write(f' {height} ')
         f.write('\n')
         for obj in feasible_objs:
             f.write(f' {obj} ')
 
     with open('results_infeasible.txt', 'w') as f:
-        for t in infeasible_types:
-            f.write(f' {t} ')
+        for height in infeasible_heights:
+            f.write(f' {height} ')
         f.write('\n')
         for obj in infeasible_objs:
             f.write(f' {obj} ')

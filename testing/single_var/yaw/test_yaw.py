@@ -12,34 +12,34 @@ class Result:
 
 def main():
     results = []
-    types_values = np.arange(0, 3)
-    for i, val in enumerate(types_values):
+    yaw_values = np.arange(0, 360, step=1)
+    for i, val in enumerate(yaw_values):
         print(f'Iteration {i}')
-        changeVariable(17, val, 'x3.txt')
+        changeVariable(-1, val, 'x3.txt')
         results.append(Result(subprocess.run(['amon', 'run', '3', 'x0.txt', '-s', '1'], capture_output=True, text=True).stdout.strip().split()))
     feasible_objs = []
-    feasible_types    = []
+    feasible_yaw    = []
     infeasible_objs = []
-    infeasible_types    = []
-    for t, result in zip(types_values, results):
+    infeasible_yaw    = []
+    for y, result in zip(yaw_values, results):
         print(f'{result.obj:.4f}: {result.is_feasible}')
         if result.is_feasible:
             feasible_objs.append(result.obj)
-            feasible_types.append(t)
+            feasible_yaw.append(y)
         else:
             infeasible_objs.append(result.obj)
-            infeasible_types.append(t)
+            infeasible_yaw.append(y)
 
     with open('results_feasible.txt', 'w') as f:
-        for t in feasible_types:
-            f.write(f' {t} ')
+        for y in feasible_yaw:
+            f.write(f' {y} ')
         f.write('\n')
         for obj in feasible_objs:
             f.write(f' {obj} ')
 
     with open('results_infeasible.txt', 'w') as f:
-        for t in infeasible_types:
-            f.write(f' {t} ')
+        for y in infeasible_yaw:
+            f.write(f' {y} ')
         f.write('\n')
         for obj in infeasible_objs:
             f.write(f' {obj} ')
