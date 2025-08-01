@@ -21,7 +21,7 @@ def main():
         for j, x in enumerate(x_values):
             print(f'{((i*len(x_values) + j)/(len(y_values)*len(x_values))) * 100:.2f}% done')
             changeVariable(2, x, 'x7.txt')
-            changeVariable(3, y, 'x7.txt')
+            changeVariable(3, y, 'x0.txt')
             output = subprocess.run(['amon', 'run', '7', 'x0.txt', '-s', '1'], capture_output=True, text=True).stdout.strip().split()
             results.append(Result(x, y, output))
 

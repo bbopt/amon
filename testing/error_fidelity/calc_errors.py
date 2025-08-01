@@ -16,8 +16,8 @@ def main():
     
     with open('results.txt', 'w') as file:
         file.write(f'Fidelities: ')
-        for fidelity in sum_differences:
-            file.write(f'   {fidelity:1.2f}    ')
+        for fidelity in range(6):
+            file.write(f'    {fidelity}     ')
         file.write(f'\nAvg diff : ')
         for sum_diff in sum_differences:
             file.write(f'{float(sum_diff/100):2.8f} ')

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def main():
     results = []
-    with open("generated_results.csv", "r") as f:
+    with open("results.csv", "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
             x = float(row["x"].strip())
