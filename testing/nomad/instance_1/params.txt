@@ -6,7 +6,7 @@ BB_OUTPUT_TYPE OBJ PB PB
 BB_INPUT_TYPE * R
 X0 x1.txt
 
-MAX_BB_EVAL 3000
+MAX_BB_EVAL 1000
 DISPLAY_ALL_EVAL yes
 display_stats bbe ( sol ) [ bbo ] obj
 

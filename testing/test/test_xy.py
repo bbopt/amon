@@ -16,14 +16,14 @@ class Result:
 
 def main(filename):
     results = []
-    x_values = np.arange(6750, 8000, (8000-6750)/500)
-    y_values = np.arange(-2950, -2000, (2950-2000)/500)
+    x_values = np.arange(6750, 8000, (8000-6750)/100)
+    y_values = np.arange(-2950, -2000, (2950-2000)/100)
     for i, y in enumerate(y_values):
         for j, x in enumerate(x_values):
             print(f'{((i*len(x_values) + j)/(len(y_values)*len(x_values))) * 100:.2f}% done')
-            changeVariable(2, x, 'x7.txt')
-            changeVariable(3, y, 'x0.txt')
-            output = subprocess.run(['amon', 'run', '7', 'x0.txt', '-s', '1', '-r', '--port', '1234'], capture_output=True, text=True).stdout.strip().split()
+            changeVariable(0, x, 'x7.txt')
+            changeVariable(1, y, 'x0.txt')
+            output = subprocess.run(['amon', 'run', 'params.txt', 'x0.txt', '-s', '1', '-r', '--port', '4321'], capture_output=True, text=True).stdout.strip().split()
             results.append(Result(x, y, output))
 
     with open(filename, "w", newline="") as f:

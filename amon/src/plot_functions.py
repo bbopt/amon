@@ -86,7 +86,7 @@ def showZone(args):
                 lines = f.read().splitlines()
                 line = next((line for line in lines if line.split()), None) # Get the line where the point is specified
         except FileNotFoundError:
-            raise FileNotFoundError(f"\033[91mError\[0m: No file at {point_filepath}")
+            raise FileNotFoundError(f"\033[91mError\033[0m: No file at {point_filepath}")
         point = [val for val in line.split()[:2*nb_turbines]]
         x, y = [float(x) for x in point[0::2]], [float(y) for y in point[1::2]]
 
