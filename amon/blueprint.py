@@ -203,7 +203,7 @@ Other files :
     BUDGET                  <Budget>
     WIND_DATA               <id (index) of wind data folder>    (*)
     TI                      <float value>
-    ELEVATION_FUNCTION      <id (index) of shear function>
+    ELEVATION_FUNCTION      <id (index) of elevation function>
     WIND_TURBINES           <ids (indices) of wind turbines>    (*) (separated by commas)
     SCALE_FACTOR            <float value>
     BLACKBOX_OUTPUT         <order of bbo>                      (*) (separated by commas) (choices: OBJ, SPACING, PLACING, HEIGHT, BUDGET)
