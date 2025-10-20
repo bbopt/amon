@@ -1,6 +1,6 @@
 DIMENSION 36
 
-BB_EXE "$amon $run $2 $-r $--port $2222"
+BB_EXE "$amon $run $2 $-r $--port $2222 $-s $1"
 BB_OUTPUT_TYPE OBJ PB PB PB
 
 BB_INPUT_TYPE ( R R R R R R R R R R R R R R R R R R R R R R R R I I I I I I I I I I I I )
