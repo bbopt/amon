@@ -68,9 +68,9 @@ def runBB(args):
     wind_speeds     = []
     wind_directions = []
     for ws in windfarm_data.WS_BB:
-        wind_speeds.append(np.random.normal(loc=ws, scale=1))
+        wind_speeds.append(np.random.normal(loc=ws, scale=0.3))
     for wd in windfarm_data.WD_BB:
-        wind_directions.append(np.random.normal(loc=wd, scale=14))
+        wind_directions.append(np.random.normal(loc=wd, scale=5))
     # print(f"(x, y)   : ({x}, {y})")
     # print(f"Types    : {types}")
     # print(f"Models   : {models}")
@@ -81,23 +81,26 @@ def runBB(args):
     aep = blackbox.AEP(x, y, ws=wind_speeds, wd=wind_directions, types=types, heights=absolute_heights, yaw_angles=yaw_angles)
     constraints = blackbox.constraints(x, y, models, diameters, heights, default_heights)
 
-    # Get the right objective function
-    if windfarm_data.obj_function.lower() == 'aep':
-        OBJ = -aep
-    elif windfarm_data.obj_function.lower() == 'roi':
-        OBJ = -blackbox.ROI(models, heights, default_heights)
-    else:
-        OBJ = blackbox.LCOE(models, heights, default_heights)
+    # Get the right objective functions, same order in the list as the parameter file
+    OBJS = []
+    for obj_name in windfarm_data.obj_functions:
+        if obj_name.lower() == 'aep':
+            OBJS.append(-aep)
+        elif obj_name.lower() == 'roi':
+            OBJS.append(-blackbox.ROI(models, heights, default_heights))
+        else:
+            OBJS.append(blackbox.LCOE(models, heights, default_heights))
 
     # If this is a constraint-free instance, penalize the objective function according to the constraints
     if windfarm_data.constraint_free:
-        OBJ = utils.penalizeObj(OBJ, constraints)
+        for i in range(len(OBJS)):
+            OBJS[i] = utils.penalizeObj(OBJS[i], constraints)
 
     # Set the blackbox output
     bbo = ''
     for field in bbo_fields:
         if field == 'OBJ':
-            bbo += f'{OBJ} '
+            bbo += f'{OBJS.pop(0)} '
         else:
             bbo += f'{constraints[field.lower()]} '
     return bbo
@@ -158,7 +161,7 @@ class Blackbox:
         if self.budget is None:
             return { 'placing' : sum_dist_buildable_zone, 
                      'spacing' : sum_dist_between_wt,
-                     'budget'  : '-',
+                     'budget'  : 0,
                      'height'  : sum_excess_height }
 
         cost_over_lifetime = lifetimeCost(chosen_models, heights, default_heights, self.lifetime)

@@ -26,7 +26,10 @@ INSTANCES_PARAM_FILEPATHS = [ AMON_HOME / 'instances' / '1' / 'params.txt',
                               AMON_HOME / 'instances' / '4' / 'params.txt',
                               AMON_HOME / 'instances' / '5' / 'params.txt',
                               AMON_HOME / 'instances' / '6' / 'params.txt',
-                              AMON_HOME / 'instances' / '7' / 'params.txt' ]
+                              AMON_HOME / 'instances' / '7' / 'params.txt',
+                              AMON_HOME / 'instances' / '8' / 'params.txt',
+                              AMON_HOME / 'instances' / '9' / 'params.txt'
+                            ]
 
 # Names of available wind turbines in order
 AVAILABLE_TURBINES_NAMES = ['V80', 'OpenWind', 'IEA_22MW', 'V82', 'Bespoke_6MW', 'IEA_3.4MW']
@@ -147,11 +150,11 @@ def getInstanceInfo(instance):
 # This function validates the output against hardcoded values
 def check():
     import subprocess
-    targets = { 1 : ['-44.71755974', '0.00000000', '0.00000000'],
-                2 : ['19556.52059443', '0.00000000', '0.00000000', '0.00000000'],
-                3 : ['1.01848667', '0.00000000', '0.00000000', '0.00000000'],
-                4 : ['1.70348783', '0.00000000', '0.00000000', '0.00000000', '-99979760.00000000'],
-                5 : ['35881.84825532', '0.00000000', '0.00000000', '0.00000000'] }
+    targets = { 1 : ['-41.04087071', '0.00000000', '0.00000000'],
+                2 : ['49783.49044310', '0.00000000', '0.00000000', '0.00000000'],
+                3 : ['1.48443280', '0.00000000', '0.00000000', '0.00000000'],
+                4 : ['4.15544646', '0.00000000', '0.00000000', '0.00000000', '-2150.00000000'],
+                5 : ['88829.00957602', '0.00000000', '0.00000000', '0.00000000'] }
     results = {}
     for i in range(5):
         print(f"Done with {20*i}% of check", end="\r", flush=True)
@@ -165,6 +168,9 @@ def check():
     print("\033[92mCHECK VALID\033[0m")
 
 def penalizeObj(OBJ, constraints): # constraints is a dict with each field corresponding to a constraint
-    OBJ += abs(OBJ) * 0.05 * constraints['placing'] # both constraints are always 0 or positive
-    OBJ += abs(OBJ) * 0.1 * constraints['spacing']
+    OBJ += abs(OBJ) * 0.05 * constraints['placing'] # first 3 constraints are always 0 or positive
+    OBJ += abs(OBJ) * 0.1  * constraints['spacing']
+    OBJ += abs(OBJ) * 0.1  * constraints['height']
+    if constraints['budget'] > 0:
+        OBJ += abs(OBJ) * 0.01 * constraints['budget']
     return OBJ

@@ -20,23 +20,23 @@ for i in range(200):
             for pt in point[22:]:
                 f.write(str(pt) + ' ')
         start_time = time.time()
-        subprocess.run(['amon', 'run', '4', 'x0.txt', '-r', '-s', '1', '-f', f'{fidelity}'], capture_output=True)
+        subprocess.run(['amon', 'run', '4', 'x0.txt', '-s', '1', '-f', f'{fidelity}'], capture_output=True)
         total_runtime[fidelity] += time.time() - start_time
 
 avg_runtime = {}
 for fidelity in range(6):
     avg_runtime[fidelity] = total_runtime[fidelity] / 200
 
-with open('results.txt', 'w') as f:
+with open('results_no_server.txt', 'w') as f:
     for fidelity in range(6):
         f.write(f'{fidelity}  ')
     f.write('\n')
     for fidelity in range(6):
         f.write(f'{avg_runtime[fidelity]:2.3f} ')
 
-fidelity = range(6)
-avg_runtime = list(avg_runtime.values())
-plt.plot(fidelity, avg_runtime)
-plt.xlabel('Fidelity')
-plt.ylabel('Runtime [s]')
-plt.title('Average runtime of instance 4 for different fidelities\n(seed = 1)')
+# fidelity = range(6)
+# avg_runtime = list(avg_runtime.values())
+# plt.plot(fidelity, avg_runtime)
+# plt.xlabel('Fidelity')
+# plt.ylabel('Runtime [s]')
+# plt.title('Average runtime of instance 4 for different fidelities\n(seed = 1)')

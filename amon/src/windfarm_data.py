@@ -28,11 +28,9 @@ OBJECTIVE_FUNCTIONS = ['AEP', 'ROI', 'LCOE']
 NB_WIND_DATA = 4
 NB_ZONES = 5
 
-# ACCEPTED_INTERPOLATION_METHODS   = ['linear', 'nearest', 'cubic']
 REQUIRED_WIND_TURBINE_PROPERTIES = {'name', 'diameter[m]', 'hub_height[m]'}
 ACCEPTED_BBO_VALUES              = {'OBJ', 'PLACING', 'SPACING', 'BUDGET', 'HEIGHT'}
 ACCEPTED_OPT_VARIABLES           = {'COORDS', 'HEIGHTS', 'TYPES', 'YAW'}
-# ACCEPTED_SUPERPOSITION_MODELS    = { 'SquaredSum' : SafeSquaredSum, 'LinearSum' : LinearSum, 'MaxSum' : MaxSum }
 REQUIRED_POWERCT_CURVE_HEADERS   = {'WindSpeed[m/s]', 'Power[MW]', 'Ct'}
 
 WAKE_DEFICIT_MODELS  = [NOJDeficit, BastankhahGaussianDeficit, CarbajofuertesGaussianDeficit]
@@ -209,7 +207,7 @@ class WindFarmData:
         #------------------------------------------------------------#
 
         self.nb_turbines = raw_data['NB_WIND_TURBINES']
-        self.obj_function = raw_data['OBJECTIVE_FUNCTION']
+        self.obj_functions = raw_data['OBJECTIVE_FUNCTION']
         self.opt_variables = raw_data['OPT_VARIABLES']
         self.bbo = raw_data['BLACKBOX_OUTPUT']
         self.budget = raw_data['BUDGET']
@@ -238,10 +236,13 @@ class WindFarmData:
         return { 'boundary_zone'  : shapefile.Reader(boundary_zone_data_filepath),
                  'exclusion_zone' : shapefile.Reader(exclusion_zone_data_filepath) }
 
-    def __getObjectiveFunction(self, function_name):
-        if function_name not in OBJECTIVE_FUNCTIONS:
-            raise ValueError(f"OBJECTIVE_FUNCTION must be one of {OBJECTIVE_FUNCTIONS}, got {function_name}")
-        return function_name
+    def __getObjectiveFunction(self, function_names):
+        objectives = []
+        for function_name in function_names.strip().split(','):
+            if function_name.strip().upper() not in OBJECTIVE_FUNCTIONS:
+                raise ValueError(f"OBJECTIVE_FUNCTION must be one of {OBJECTIVE_FUNCTIONS}, got {function_name}")
+            objectives.append(function_name.strip())
+        return objectives
 
     def __getElevationFunction(self, id):
         id = self.__cast(id, int, "ELEVATION_FUNCTION")
@@ -286,7 +287,7 @@ class WindFarmData:
         return wt_data
 
     def __getBlackboxOutput(self, list_outputs):
-        list_outputs = [output.strip() for output in list_outputs.split(',')]
+        list_outputs = [output.strip().upper() for output in list_outputs.split(',')]
         if not set(list_outputs).issubset(ACCEPTED_BBO_VALUES):
             raise ValueError(f"BLACKBOX_OUTPUT must be within {ACCEPTED_BBO_VALUES}")
         return list_outputs 

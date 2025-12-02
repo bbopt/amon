@@ -14,8 +14,9 @@ def main():
     results = []
     x_values = np.arange(13552, 16005, (16005-13552)/500)
     for val in x_values:
+        print(f'{(val - 13552)/((16005-13552)/500)}% done')
         changeVariable(10, val, 'x3.txt')
-        results.append(Result(subprocess.run(['amon', 'run', '3', 'x0.txt', '-s', '1'], capture_output=True, text=True).stdout.strip().split()))
+        results.append(Result(subprocess.run(['amon', 'run', '3', 'x0.txt', '-s', '1', '-r', '--port', '9191'], capture_output=True, text=True).stdout.strip().split()))
     feasible_objs = []
     feasible_x    = []
     infeasible_objs = []

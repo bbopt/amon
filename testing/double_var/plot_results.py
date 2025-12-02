@@ -29,10 +29,11 @@ def main():
             extent=[min(xs), max(xs), min(ys), max(ys)],
             aspect="auto")
     plt.colorbar(label="Objective Value")
-    plt.xlabel("x")
-    plt.ylabel("y")
+    plt.xlabel("x [m]")
+    plt.ylabel("y [m]")
+    plt.grid(True)
     plt.title("Feasible Objective Heatmap")
-    plt.savefig('hello.png')
+    plt.savefig('results_heatmap.png')
 
 if __name__ == '__main__':
     main()

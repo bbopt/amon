@@ -54,7 +54,7 @@ def main():
 
     plt.title('Objective function when changing one turbine\'s y position')
     plt.grid()
-    plt.xlabel('y position')
+    plt.xlabel('y position [m]')
     plt.ylabel('Objective function')
     plt.show()
     plt.savefig('result_y_position.png')

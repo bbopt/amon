@@ -16,7 +16,7 @@ def main():
     for i, val in enumerate(types_values):
         print(f'Iteration {i}')
         changeVariable(17, val, 'x3.txt')
-        results.append(Result(subprocess.run(['amon', 'run', '3', 'x0.txt', '-s', '1'], capture_output=True, text=True).stdout.strip().split()))
+        results.append(Result(subprocess.run(['amon', 'run', '3', 'x0.txt'], capture_output=True, text=True).stdout.strip().split()))
     feasible_objs = []
     feasible_types    = []
     infeasible_objs = []
