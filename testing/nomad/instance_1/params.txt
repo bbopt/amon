@@ -10,6 +10,7 @@ MAX_BB_EVAL 20000
 DISPLAY_ALL_EVAL yes
 display_stats bbe ( sol ) [ bbo ] obj
 
+HISTORY_FILE history.txt
 
 VARIABLE_GROUP 0 1
 VARIABLE_GROUP 2 3

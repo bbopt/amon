@@ -4,21 +4,29 @@ import subprocess
 def main():
     set_radius = 10
     points = []
-    points.append([(14850, -5804), (15617, -4860), (15926, -5731), (14977, -4538), (14251, -5472), (13737, -4935)])
-    objectives = [1.48443280]
+    points += [(14850, -5804), (15617, -4860), (15926, -5731), (14977, -4538), (14251, -5472), (13737, -4935)]
     balls = []
     for point in points:
         balls.append(Boule(set_radius, point[0], point[1]))
+    results = []
     for i in range(300):
+        print(f"Iteration {i+1} of 300")
         current_point = []
         for ball in balls:
             random_point = ball.getRandomPoint()
             current_point.append(random_point[0])
             current_point.append(random_point[1])
-        rest_of_point = [float(item) for item in '0 0 0 0 0 0 170 170 170 170 170 170 0 0 0 0 0 0']
-        
+        rest_of_point = [float(item) for item in '0 0 0 0 0 0 170 170 170 170 170 170 0 0 0 0 0 0'.split()]
+        current_point += rest_of_point
+        with open('x3.txt', 'w') as f:
+            for elem in current_point:
+                f.write(str(elem) + ' ')
+        results.append(float(subprocess.run(['amon', 'run', '3', 'x3.txt', '-r', '--port', '8989'], capture_output=True, text=True).stdout.strip().split()[0]))
 
-    results.append(float(subprocess.run(['amon', 'run', '3', 'x0.txt', '-r', '--port', '8989'], capture_output=True, text=True).stdout.strip().split()[0]))
+    with open("results.txt", 'w') as file:
+        for result in results:
+            file.write(f"{result}\n")
+        
     
 
 class Boule:
@@ -32,3 +40,6 @@ class Boule:
         point_x = norme * np.cos(phase)
         point_y = norme * np.sin(phase)
         return (point_x, point_y)
+
+if __name__ == "__main__":
+    main()
