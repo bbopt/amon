@@ -10,7 +10,7 @@ def f(x):
     with open("x1.txt", 'w') as file:
         for param in x:
             file.write(f'{param} ')
-    result = subprocess.run(['amon',  'run',  '6', 'x1.txt', '-s',  '1'],capture_output=True, text=True)
+    result = subprocess.run(['amon',  'run',  '6', 'x1.txt', '-s',  '1', '-r', '--port', '6666'],capture_output=True, text=True)
     print(result.stdout)
     lines = result.stdout.strip().split()
     PREVIOUS_EVAL['x'] = str(x)

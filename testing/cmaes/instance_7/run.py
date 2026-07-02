@@ -11,7 +11,7 @@ def f(x):
     with open("x1.txt", 'w') as file:
         for param in x:
             file.write(f'{param} ')
-    result = subprocess.run(['amon',  'run',  '7', 'x1.txt', '-s',  '1'],capture_output=True, text=True)
+    result = subprocess.run(['amon',  'run',  '7', 'x1.txt', '-s',  '1', '-r', '--port', '7777'],capture_output=True, text=True)
     print(result.stdout)
     lines = result.stdout.strip().split()
     PREVIOUS_EVAL['x'] = str(x)
@@ -25,7 +25,7 @@ def constraints(x):
     with open("x1.txt", 'w') as file:
         for param in x:
             file.write(f'{param} ')
-    result = subprocess.run(['amon',  'run',  '7', 'x1.txt', '-s',  '1'],capture_output=True, text=True)
+    result = subprocess.run(['amon',  'run',  '7', 'x1.txt', '-s',  '1', '-r', '--port', '7777'],capture_output=True, text=True)
     print(result.stdout)
     lines = result.stdout.strip().split()
     PREVIOUS_EVAL['x'] = str(x)

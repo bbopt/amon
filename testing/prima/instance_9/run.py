@@ -18,7 +18,7 @@ def run_amon(x, integer_indices):
         for param in x_eval:
             file.write(f'{param} ')
 
-    result = subprocess.run(['amon', 'run', '9', 'x1.txt', '-s', '1'],
+    result = subprocess.run(['amon', 'run', '9', 'x1.txt', '-s', '1', '-r', '--port', '9991'],
                             capture_output=True, text=True)
     print(result.stdout)
     if result.returncode != 0:

@@ -11,7 +11,7 @@ def f(x):
     with open("x1.txt", 'w') as file:
         for param in x:
             file.write(f'{param} ')
-    result = subprocess.run(['amon',  'run',  '3', 'x1.txt', '-s',  '1'],capture_output=True, text=True)
+    result = subprocess.run(['amon',  'run',  '3', 'x1.txt', '-s',  '1', '-r', '--port', '3333'],capture_output=True, text=True)
     print(result.stdout)
     lines = result.stdout.strip().split()
     PREVIOUS_EVAL['x'] = str(x)
@@ -25,7 +25,7 @@ def constraints(x):
     with open("x1.txt", 'w') as file:
         for param in x:
             file.write(f'{param} ')
-    result = subprocess.run(['amon',  'run',  '3', 'x1.txt', '-s',  '1'],capture_output=True, text=True)
+    result = subprocess.run(['amon',  'run',  '3', 'x1.txt', '-s',  '1', '-r', '--port', '3333'],capture_output=True, text=True)
     print(result.stdout)
     lines = result.stdout.strip().split()
     PREVIOUS_EVAL['x'] = str(x)
@@ -33,7 +33,7 @@ def constraints(x):
     return [float(l) for l in lines[1:]]
 
 def main():
-    penalized_objective = cma.ConstrainedFitnessAL(f, constraints)
+    # penalized_objective = cma.ConstrainedFitnessAL(f, constraints)
     x0 = []
     with open('x0.txt', 'r') as initial_point_file:
         point = initial_point_file.readline().strip().split()
@@ -55,11 +55,10 @@ def main():
         lower_bound[i] = 0
         upper_bound[i] =  2 ** np.pi
 
-    xopt, es = cma.fmin2(penalized_objective, x0, 1000, options={
+    xopt, es = cma.fmin2(f, x0, 1, options={
         'integer_variables': model_indices,
         'bounds': [lower_bound, upper_bound],
-        'maxfevals': 500
-    })
+        'maxfevals': 20000}, constraints=constraints)
     penalized_objective.update(es) 
 
     print(xopt)

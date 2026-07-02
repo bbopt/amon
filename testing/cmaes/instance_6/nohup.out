@@ -1,0 +1,23 @@
+(7_w,15)-aCMA-ES (mu_w=4.5,w_1=34%) in dimension 42 (seed=495073, Thu Jun 25 14:56:09 2026)
+73313.64957838 
+
+14176.51997832 
+
+Unable to allocate 4.17 MiB for an array with shape (21, 21, 62, 1, 20) and data type float64
+
+Traceback (most recent call last):
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_6/run.py", line 32, in <module>
+    main()
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_6/run.py", line 27, in main
+    xopt, _ = cma.fmin2(f, x0, 1000, options={'maxfevals': 500})
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/evolution_strategy.py", line 4729, in fmin2
+    res = fmin(objective_function, x0, sigma0,
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/evolution_strategy.py", line 5077, in fmin
+    X, fit = es.ask_and_eval(parallel_objective or objective_function,
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/evolution_strategy.py", line 2256, in ask_and_eval
+    f = func(x, *args) if kappa == 1 else \
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_6/run.py", line 17, in f
+    PREVIOUS_EVAL['result'] = [float(l) for l in lines]
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_6/run.py", line 17, in <listcomp>
+    PREVIOUS_EVAL['result'] = [float(l) for l in lines]
+ValueError: could not convert string to float: 'Unable'

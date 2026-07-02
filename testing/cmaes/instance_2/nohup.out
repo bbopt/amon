@@ -1,0 +1,49 @@
+/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/boundary_handler.py:213: RuntimeWarning: invalid value encountered in remainder
+  set_bounds(which, np.mod(bounds, 1) == at, integer_indices)
+/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/evolution_strategy.py:1541: UserWarning: Sampling standard deviation i=24 (and 11 others) at iteration 0 multiplied by 0.0006666444448148106 to stds[24]=0.6666666666666666
+  warnings.warn("Sampling standard deviation i={0}{4} at iteration {1}"
+(12_w,24)-aCMA-ES (mu_w=7.0,w_1=24%) in dimension 36 (seed=537100, Thu Jun 25 14:53:56 2026)
+89438.86577717 0.00000000 6350.63281472 0.00000000 
+
+89888.52741848 118.62038654 6970.23770985 0.00000000 
+
+83029.66636726 0.00000000 7954.70550907 0.00000000 
+
+78010.90923029 0.00000000 7384.06059547 0.00000000 
+
+72374.92970469 0.00000000 6094.11469914 0.00000000 
+
+59460.84295773 0.00000000 7999.55982192 0.00000000 
+
+83873.89913637 0.00000000 6246.69472776 0.00000000 
+
+94912.82457901 0.00000000 12180.28969910 0.00000000 
+
+76595.61733971 11.70695340 8592.16637271 0.00000000 
+
+83754.24855621 0.00000000 8521.22193586 0.00000000 
+
+78144.57551765 0.00000000 6249.77112633 0.00000000 
+
+78124.85730272 53.96717757 5927.09158648 0.00000000 
+
+[Errno 12] Cannot allocate memory
+
+Traceback (most recent call last):
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_2/run.py", line 58, in <module>
+    main()
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_2/run.py", line 48, in main
+    xopt, es = cma.fmin2(penalized_objective, x0, 1000, options={
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/evolution_strategy.py", line 4729, in fmin2
+    res = fmin(objective_function, x0, sigma0,
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/evolution_strategy.py", line 5077, in fmin
+    X, fit = es.ask_and_eval(parallel_objective or objective_function,
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/evolution_strategy.py", line 2256, in ask_and_eval
+    f = func(x, *args) if kappa == 1 else \
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/cma/constraints_handler.py", line 951, in __call__
+    self.G += [self.constraints(x)]
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_2/run.py", line 31, in constraints
+    PREVIOUS_EVAL['result'] = [float(l) for l in lines]
+  File "/home/bineleon/Documents/AMON/amon/testing/cmaes/instance_2/run.py", line 31, in <listcomp>
+    PREVIOUS_EVAL['result'] = [float(l) for l in lines]
+ValueError: could not convert string to float: '[Errno'

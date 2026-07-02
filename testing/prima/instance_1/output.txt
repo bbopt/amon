@@ -1,0 +1,51 @@
+capi_return is NULL
+Call-back cb_calcfc_in__cobyla__user__routines failed.
+-41.04087071 0.00000000 0.00000000 
+
+-41.04036792 0.00000000 0.00000000 
+
+-41.04020035 0.00000000 0.00000000 
+
+-41.03840293 0.00000000 0.00000000 
+
+-41.04155783 0.00000000 0.00000000 
+
+-41.04304966 0.00000000 0.00000000 
+
+-41.04306182 0.00000000 0.00000000 
+
+-41.04088228 0.00000000 0.00000000 
+
+-41.04203050 0.00000000 0.00000000 
+
+-41.04288550 0.00000000 0.00000000 
+
+-41.04345816 0.00000000 0.00000000 
+
+-41.04297027 0.00000000 0.00000000 
+
+
+Traceback (most recent call last):
+  File "/home/bineleon/Documents/AMON/amon/testing/prima/instance_1/run.py", line 55, in <module>
+    main()
+  File "/home/bineleon/Documents/AMON/amon/testing/prima/instance_1/run.py", line 50, in main
+    result = minimize(f, x0, method='COBYLA', constraints=constraints_dicts)
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_minimize.py", line 719, in minimize
+    res = _minimize_cobyla(fun, x0, args, constraints, callback=callback,
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_cobyla_py.py", line 35, in wrapper
+    return func(*args, **kwargs)
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_cobyla_py.py", line 293, in _minimize_cobyla
+    xopt, info = cobyla.minimize(calcfc, m=m, x=np.copy(x0), rhobeg=rhobeg,
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_cobyla_py.py", line 281, in calcfc
+    f = sf.fun(x)
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 278, in fun
+    self._update_fun()
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 262, in _update_fun
+    self._update_fun_impl()
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 163, in update_fun
+    self.f = fun_wrapped(self.x)
+  File "/home/bineleon/Documents/AMON/amon/testing/.venv/lib64/python3.9/site-packages/scipy/optimize/_differentiable_functions.py", line 145, in fun_wrapped
+    fx = fun(np.copy(x), *args)
+  File "/home/bineleon/Documents/AMON/amon/testing/prima/instance_1/run.py", line 19, in f
+    return float(lines[0])
+IndexError: list index out of range
