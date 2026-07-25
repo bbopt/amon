@@ -2,11 +2,18 @@
 
 # Installation
 
-The use of a virtual environment is recommended.
+The use of a virtual environment is recommended. Navigate to where `amon` is to be used. Then create the virtual environment and activate it.
 
-> For venv basics: https://realpython.com/python-virtual-environments-a-primer/
+```bash
+python -m venv .venv
+```
+```bash
+source .venv/bin/activate
+```
 
-> If you run into `PATH` issues (`command not found: amon` and similar), or want to run the entry-point script directly without adding its directory to `PATH`, consult [`PATH_DOC.md`](PATH_DOC.md). If the issue persists, please create a new issue or reach out to **adress@provider.extension**.
+The prompt should now start with `(.venv)`.
+
+> For more details on virtual environments, such as commands for Windows systems, see https://docs.python.org/3/library/venv.html 
 
 **To install:**
 
@@ -32,7 +39,7 @@ To view all available commands:
 amon -h
 ```
 
-To view the help menu for a specific command, `run` for example:
+To view the help menu for a specific command, `run` for example: https://docs.python.org/3/library/venv.html
 
 ```bash
 amon run -h
