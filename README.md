@@ -316,7 +316,7 @@ amon/
 ├── blueprint.py
 ```
 
-README.md, .gitignore, and other files (at top level)
+README.md, .gitignore, and other files are at top level
 
 ## More info
 
