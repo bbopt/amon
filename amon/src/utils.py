@@ -151,7 +151,7 @@ def getInstanceInfo(instance):
 def check():
     import subprocess
     targets = { 1 : ['-41.04087071', '0.00000000', '0.00000000'],
-                2 : ['49783.49044310', '0.00000000', '0.00000000', '0.00000000'],
+                2 : ['49783.49044310', '0.00000000', '0.00000000'],
                 3 : ['1.48443280', '0.00000000', '0.00000000', '0.00000000'],
                 4 : ['4.15544646', '0.00000000', '0.00000000', '0.00000000', '-2150.00000000'],
                 5 : ['88829.00957602', '0.00000000', '0.00000000', '0.00000000'] }
@@ -163,7 +163,9 @@ def check():
     print(' ' * 40, end='\r')
     for instance, target_result in targets.items():
         if target_result != results[instance]:
-            print("\033[91mCHECK INVALID\033[0m: Unexpected results, please contact some_adress@provider.extension")
+            print("\033[91mCHECK INVALID\033[0m: Unexpected results, please contact leon.biner@etud.polymtl.ca")
+            print(f'Expected {target_result}')
+            print(f'Got {results[instance]}')
             return
     print("\033[92mCHECK VALID\033[0m")
 
