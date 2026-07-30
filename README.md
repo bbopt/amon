@@ -39,7 +39,7 @@ To view all available commands:
 amon -h
 ```
 
-To view the help menu for a specific command, `run` for example: https://docs.python.org/3/library/venv.html
+To view the help menu for a specific command (`run` for example) :
 
 ```bash
 amon run -h
