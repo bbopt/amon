@@ -1,4 +1,8 @@
-### Version 0.6
+### Version 0.7
+
+The amon blackbox optimization benchmarking problem.
+
+Made by Léon Biner.
 
 # Installation
 
