@@ -10,3 +10,4 @@ nomadtmp*
 .nfs*
 trash/
 testing/
+.venv/
