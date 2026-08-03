@@ -1,4 +1,4 @@
-### Version 0.8
+### Version 0.8.1
 
 The amon blackbox optimization benchmarking problem.
 
