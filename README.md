@@ -9,13 +9,13 @@ Made by Léon Biner.
 The use of a virtual environment is recommended. Navigate to where `amon` is to be used. Then create the virtual environment and activate it.
 
 ```bash
-python -m venv .venv
+python -m venv $VENV_NAME
 ```
 ```bash
-source .venv/bin/activate
+source $VENV_NAME/bin/activate
 ```
 
-The prompt should now start with `(.venv)`.
+The prompt should now start with `($VENV_NAME)`.
 
 > For more details on virtual environments, such as commands for Windows systems, see https://docs.python.org/3/library/venv.html 
 
@@ -127,7 +127,7 @@ x_1 y_1 x_2 y_2 x_3 y_3 x_4 y_4 h_1 h_2 h_3 h_4 t_1 t_2 t_3 t_4
 ```
 -s SEED     : Set the random seed (random by default if not specified)
 -r          : Send request to the local server instead of running directly (see the serve command)
--f FIDELITY : Set the fidelity (between 0 and 1)
+-f FIDELITY : Set the fidelity (integer between 0 and 5)
 --port PORT : Specify the port for the local server
 --debug     : Show full error tracebacks for debugging
 ```
@@ -142,7 +142,7 @@ The output is set by the BLACKBOX_OUTPUT field of the parameter file. It can be 
 ### Command example
 
 ```bash
-amon run 1 AMON_HOME/starting_pts/x1.txt -s 3 -f 0.5
+amon run 1 AMON_HOME/starting_pts/x1.txt -s 3 -f 3
 ```
 
 ## `show-windrose`
@@ -161,7 +161,7 @@ The first and only argument is the id of the wind data.
 ### Command example
 
 ```bash
-amon show-windrose 1 --save path/to/file.png
+amon show-windrose 1 --save $FILEPATH/$file.png
 ```
 
 ## `show-zone`
